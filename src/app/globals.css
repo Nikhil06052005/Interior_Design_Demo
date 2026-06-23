@@ -1,29 +1,28 @@
 @import "tailwindcss";
 
 :root {
-  --background: #faf7f2;
+  --background: #ffffff;
   --foreground: #1a1a1a;
-  --mankuu-red: #c41e24;
-  --mankuu-gold: #d4a017;
-  --mankuu-cream: #faf7f2;
-  --mankuu-charcoal: #2a2a2a;
-  --mankuu-muted: #6b6560;
+  --mankuu-red: #e63946;
+  --mankuu-red-dark: #c1121f;
+  --mankuu-gold: #f4a261;
+  --mankuu-cream: #f8f9fa;
+  --mankuu-charcoal: #212529;
+  --mankuu-muted: #6c757d;
+  --mankuu-border: #e9ecef;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-mankuu-red: var(--mankuu-red);
+  --color-mankuu-red-dark: var(--mankuu-red-dark);
   --color-mankuu-gold: var(--mankuu-gold);
   --color-mankuu-cream: var(--mankuu-cream);
   --color-mankuu-charcoal: var(--mankuu-charcoal);
   --color-mankuu-muted: var(--mankuu-muted);
-  --font-sans: var(--font-dm-sans);
-  --font-display: var(--font-cormorant);
-}
-
-.font-display {
-  font-family: var(--font-cormorant), Georgia, serif;
+  --color-mankuu-border: var(--mankuu-border);
+  --font-sans: var(--font-jakarta);
 }
 
 html {
@@ -47,65 +46,119 @@ html {
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: var(--font-dm-sans), system-ui, sans-serif;
-}
-
-.blueprint-grid {
-  background-image:
-    linear-gradient(rgba(196, 30, 36, 0.04) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(196, 30, 36, 0.04) 1px, transparent 1px);
-  background-size: 48px 48px;
+  font-family: var(--font-jakarta), system-ui, sans-serif;
 }
 
 .founder-portrait {
   filter: saturate(1.05) contrast(1.08) brightness(1.02);
-  object-position: center 15%;
+  object-fit: cover;
+  object-position: center top;
 }
 
-.founder-frame {
-  transform: perspective(800px) rotateY(-4deg);
-  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+.founder-image-wrap {
+  background: linear-gradient(135deg, #e8f0e8 0%, #f5f0e8 50%, #f8f9fa 100%);
 }
 
-@media (max-width: 768px) {
-  .founder-frame {
-    transform: none;
-  }
+.room-card {
+  transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+    box-shadow 0.4s ease;
 }
 
-@media (prefers-reduced-motion: reduce) {
-  .founder-frame {
-    transform: none;
-  }
-}
-
-.hero-3d-scene {
-  perspective: 1200px;
-  transform-style: preserve-3d;
-}
-
-.hero-card {
-  transform-style: preserve-3d;
-  transition: transform 0.4s ease;
-}
-
-.service-card-3d {
-  transform-style: preserve-3d;
-  transition: transform 0.35s ease, box-shadow 0.35s ease;
-}
-
-.service-card-3d:hover {
-  transform: translateY(-8px) rotateX(2deg);
-  box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.15);
+.room-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 40px -12px rgba(0, 0, 0, 0.2);
 }
 
 @media (max-width: 768px), (prefers-reduced-motion: reduce) {
-  .service-card-3d:hover {
-    transform: translateY(-4px);
+  .room-card:hover {
+    transform: none;
   }
 }
 
-.glass-overlay {
-  backdrop-filter: blur(12px);
-  background: rgba(250, 247, 242, 0.75);
+.benefit-card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.benefit-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 24px -8px rgba(0, 0, 0, 0.1);
+}
+
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+.card-shine {
+  background: linear-gradient(
+    105deg,
+    transparent 40%,
+    rgba(255, 255, 255, 0.18) 45%,
+    rgba(255, 255, 255, 0.28) 50%,
+    rgba(255, 255, 255, 0.18) 55%,
+    transparent 60%
+  );
+  transform: translateX(-100%);
+  animation: shine 0.6s ease forwards;
+}
+
+.group:hover .card-shine {
+  animation: shine 0.7s ease forwards;
+}
+
+@keyframes shine {
+  to {
+    transform: translateX(100%);
+  }
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-6px);
+  }
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-float,
+  .card-shine {
+    animation: none;
+  }
+}
+
+.modal-backdrop {
+  backdrop-filter: blur(6px);
+  background: rgba(0, 0, 0, 0.55);
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(24px) scale(0.97);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.modal-enter {
+  animation: slideUp 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .modal-enter {
+    animation: none;
+  }
 }
