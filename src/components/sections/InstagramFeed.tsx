@@ -7,19 +7,19 @@ import { contact, instagramPosts } from "@/lib/content";
 
 export function InstagramFeed() {
   return (
-    <section className="border-t border-mankuu-border bg-white py-16 md:py-20">
+    <section className="section-padding border-t border-mankuu-border bg-white">
       <div className="mx-auto max-w-7xl px-4 md:px-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="flex flex-col items-start justify-between gap-4 sm:flex-row sm:items-end"
+          className="flex flex-col items-start justify-between gap-3 sm:flex-row sm:items-end sm:gap-4"
         >
           <div>
             <p className="text-xs font-bold uppercase tracking-[0.2em] text-mankuu-red">
               Follow Us
             </p>
-            <h2 className="mt-3 text-2xl font-extrabold text-mankuu-charcoal md:text-3xl">
+            <h2 className="section-title mt-2 text-mankuu-charcoal md:mt-3">
               Latest on Instagram
             </h2>
           </div>
@@ -27,13 +27,13 @@ export function InstagramFeed() {
             href={contact.instagram}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 rounded-lg border border-mankuu-red px-5 py-2.5 text-sm font-semibold text-mankuu-red transition-colors hover:bg-mankuu-red hover:text-white"
+            className="inline-flex items-center gap-2 rounded-lg border border-mankuu-red px-4 py-2 text-xs font-semibold text-mankuu-red transition-colors hover:bg-mankuu-red hover:text-white sm:px-5 sm:py-2.5 sm:text-sm"
           >
             @mankuu_architectural_designer
           </Link>
         </motion.div>
 
-        <div className="mt-8 grid grid-cols-2 gap-2 sm:grid-cols-3 md:gap-3 lg:grid-cols-6">
+        <div className="mt-5 grid grid-cols-2 gap-2 sm:mt-8 sm:grid-cols-3 md:gap-3 lg:grid-cols-6">
           {instagramPosts.map((post, i) => (
             <motion.a
               key={post.id}
@@ -45,7 +45,9 @@ export function InstagramFeed() {
               viewport={{ once: true }}
               transition={{ delay: i * 0.06 }}
               whileHover={{ scale: 1.03 }}
-              className="group relative aspect-square overflow-hidden rounded-lg"
+              className={`group relative aspect-square overflow-hidden rounded-lg ${
+                i >= 4 ? "hidden sm:block" : ""
+              }`}
             >
               <Image
                 src={post.image}

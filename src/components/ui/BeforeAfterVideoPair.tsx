@@ -8,7 +8,6 @@ const AFTER_PLAYBACK_RATE = 0.65;
 interface VideoCardProps {
   videoRef: React.RefObject<HTMLVideoElement | null>;
   src: string;
-  poster: string;
   title: string;
   label: "Before" | "After";
   onToggle: () => void;
@@ -18,26 +17,42 @@ interface VideoCardProps {
 function VideoCard({
   videoRef,
   src,
-  poster,
   title,
   label,
   onToggle,
   playing,
 }: VideoCardProps) {
   const isBefore = label === "Before";
+  const [frameReady, setFrameReady] = useState(false);
+
+  const bindVideo = (node: HTMLVideoElement | null) => {
+    videoRef.current = node;
+    if (!node) return;
+
+    const onReady = () => {
+      setFrameReady(true);
+    };
+
+    node.addEventListener("loadeddata", onReady, { once: true });
+    if (node.readyState >= 2) onReady();
+  };
 
   return (
-    <div className="group relative overflow-hidden rounded-2xl bg-black shadow-xl ring-1 ring-white/10 transition-transform duration-500 hover:scale-[1.02]">
+    <div className="group relative overflow-hidden rounded-2xl bg-black shadow-xl ring-1 ring-white/10">
       <video
-        ref={videoRef}
+        ref={bindVideo}
         src={src}
-        poster={poster}
         muted
         loop
         playsInline
         preload="metadata"
-        className="aspect-video w-full object-cover"
+        className={`aspect-video w-full object-cover transition-opacity duration-300 ${
+          frameReady ? "opacity-100" : "opacity-0"
+        }`}
       />
+      {!frameReady && (
+        <div className="absolute inset-0 animate-pulse bg-mankuu-charcoal/80" aria-hidden />
+      )}
       <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-black/20" />
       <span
         className={`absolute left-4 top-4 rounded-full px-3 py-1 text-xs font-bold uppercase tracking-wider text-white ${
@@ -53,7 +68,7 @@ function VideoCard({
         type="button"
         onClick={onToggle}
         aria-label={playing ? "Pause both videos" : "Play both videos"}
-        className="absolute left-1/2 top-1/2 flex h-14 w-14 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-white/90 text-mankuu-charcoal shadow-lg transition-all hover:scale-110 md:opacity-0 md:group-hover:opacity-100"
+        className="absolute left-1/2 top-1/2 flex h-14 w-14 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-white/90 text-mankuu-charcoal shadow-lg transition-transform hover:scale-110 md:opacity-0 md:group-hover:opacity-100"
       >
         {playing ? (
           <svg className="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
@@ -70,28 +85,21 @@ function VideoCard({
 }
 
 export function BeforeAfterVideoPair() {
+  const containerRef = useRef<HTMLDivElement>(null);
   const beforeRef = useRef<HTMLVideoElement>(null);
   const afterRef = useRef<HTMLVideoElement>(null);
-  const containerRef = useRef<HTMLDivElement>(null);
-  const hasStartedRef = useRef(false);
   const [playing, setPlaying] = useState(false);
 
   const beforeVideo = projectVideos[1];
   const afterVideo = projectVideos[0];
 
-  const playBoth = useCallback(async (fromStart = false) => {
+  const playBoth = useCallback(async () => {
     const before = beforeRef.current;
     const after = afterRef.current;
     if (!before || !after) return;
 
     before.playbackRate = 1;
     after.playbackRate = AFTER_PLAYBACK_RATE;
-
-    if (fromStart || !hasStartedRef.current) {
-      before.currentTime = 0;
-      after.currentTime = 0;
-      hasStartedRef.current = true;
-    }
 
     try {
       await Promise.all([before.play(), after.play()]);
@@ -124,7 +132,7 @@ export function BeforeAfterVideoPair() {
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
-          playBoth(!hasStartedRef.current);
+          playBoth();
         } else {
           pauseBoth();
         }
@@ -134,14 +142,13 @@ export function BeforeAfterVideoPair() {
 
     observer.observe(el);
     return () => observer.disconnect();
-  }, [pauseBoth, playBoth]);
+  }, [playBoth, pauseBoth]);
 
   return (
-    <div ref={containerRef} className="grid gap-6 lg:grid-cols-2">
+    <div ref={containerRef} className="grid gap-4 sm:gap-6 lg:grid-cols-2">
       <VideoCard
         videoRef={beforeRef}
         src={beforeVideo.src}
-        poster={beforeVideo.poster}
         title={beforeVideo.title}
         label="Before"
         onToggle={toggleBoth}
@@ -150,7 +157,6 @@ export function BeforeAfterVideoPair() {
       <VideoCard
         videoRef={afterRef}
         src={afterVideo.src}
-        poster={afterVideo.poster}
         title={afterVideo.title}
         label="After"
         onToggle={toggleBoth}

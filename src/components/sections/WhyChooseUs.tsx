@@ -28,7 +28,7 @@ const icons: Record<string, React.ReactNode> = {
 
 export function WhyChooseUs() {
   return (
-    <section id="why-us" className="bg-mankuu-cream py-16 md:py-24">
+    <section id="why-us" className="section-padding bg-mankuu-cream">
       <div className="mx-auto max-w-7xl px-4 md:px-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -39,12 +39,12 @@ export function WhyChooseUs() {
           <p className="text-xs font-bold uppercase tracking-[0.2em] text-mankuu-red">
             Why MANKUU?
           </p>
-          <h2 className="mt-3 text-3xl font-extrabold text-mankuu-charcoal md:text-4xl">
+          <h2 className="section-title mt-2 text-mankuu-charcoal md:mt-3">
             Here&apos;s Why Families Trust Us
           </h2>
         </motion.div>
 
-        <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="mt-6 grid grid-cols-2 gap-3 sm:mt-10 sm:gap-5 lg:grid-cols-4">
           {whyChooseUs.map((item, i) => (
             <motion.div
               key={item.title}
@@ -53,15 +53,15 @@ export function WhyChooseUs() {
               viewport={{ once: true }}
               transition={{ delay: i * 0.1 }}
               whileHover={{ y: -6, transition: { duration: 0.2 } }}
-              className="benefit-card rounded-2xl bg-white p-6 shadow-sm"
+              className="benefit-card rounded-xl bg-white p-4 shadow-sm sm:rounded-2xl sm:p-6"
             >
-              <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-mankuu-red/10 text-mankuu-red">
+              <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-mankuu-red/10 text-mankuu-red sm:h-12 sm:w-12 sm:rounded-xl">
                 {icons[item.icon]}
               </div>
-              <h3 className="mt-4 text-lg font-bold text-mankuu-charcoal">
+              <h3 className="mt-3 text-sm font-bold text-mankuu-charcoal sm:mt-4 sm:text-lg">
                 {item.title}
               </h3>
-              <p className="mt-2 text-sm leading-relaxed text-mankuu-muted">
+              <p className="mt-1.5 text-xs leading-relaxed text-mankuu-muted sm:mt-2 sm:text-sm">
                 {item.description}
               </p>
             </motion.div>

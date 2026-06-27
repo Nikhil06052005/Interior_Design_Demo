@@ -5,7 +5,7 @@ import { testimonials } from "@/lib/content";
 
 export function Testimonials() {
   return (
-    <section id="testimonials" className="bg-mankuu-cream py-16 md:py-24">
+    <section id="testimonials" className="section-padding bg-mankuu-cream">
       <div className="mx-auto max-w-7xl px-4 md:px-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -16,12 +16,12 @@ export function Testimonials() {
           <p className="text-xs font-bold uppercase tracking-[0.2em] text-mankuu-red">
             Client Reviews
           </p>
-          <h2 className="mt-3 text-3xl font-extrabold text-mankuu-charcoal md:text-4xl">
+          <h2 className="section-title mt-2 text-mankuu-charcoal md:mt-3">
             What Our Clients Say
           </h2>
         </motion.div>
 
-        <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="mt-6 grid grid-cols-1 gap-3 sm:mt-10 sm:grid-cols-2 sm:gap-5 lg:grid-cols-4">
           {testimonials.map((t, i) => (
             <motion.article
               key={t.id}
@@ -30,7 +30,9 @@ export function Testimonials() {
               viewport={{ once: true }}
               transition={{ delay: i * 0.1 }}
               whileHover={{ y: -4 }}
-              className="flex flex-col rounded-2xl bg-white p-6 shadow-sm"
+              className={`flex flex-col rounded-xl bg-white p-4 shadow-sm sm:rounded-2xl sm:p-6 ${
+                i >= 2 ? "hidden sm:flex" : ""
+              }`}
             >
               <div className="flex gap-0.5 text-mankuu-gold">
                 {Array.from({ length: t.rating }).map((_, j) => (

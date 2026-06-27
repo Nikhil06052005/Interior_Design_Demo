@@ -9,7 +9,7 @@ export function Portfolio() {
   const { openModal } = useConsultation();
 
   return (
-    <section id="work" className="py-16 md:py-24">
+    <section id="work" className="section-padding">
       <div className="mx-auto max-w-7xl px-4 md:px-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -20,15 +20,15 @@ export function Portfolio() {
           <p className="text-xs font-bold uppercase tracking-[0.2em] text-mankuu-red">
             Our Work
           </p>
-          <h2 className="mt-3 text-3xl font-extrabold text-mankuu-charcoal md:text-4xl">
+          <h2 className="section-title mt-2 text-mankuu-charcoal md:mt-3">
             From Vision to Reality
           </h2>
-          <p className="mx-auto mt-3 max-w-2xl text-mankuu-muted">
+          <p className="mx-auto mt-2 max-w-2xl text-sm text-mankuu-muted md:mt-3">
             Selected projects across Moga and Punjab — residential, commercial and Vastu-led designs.
           </p>
         </motion.div>
 
-        <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="mt-6 grid grid-cols-2 gap-3 sm:mt-10 sm:gap-5 lg:grid-cols-4">
           {portfolioProjects.map((project, i) => (
             <motion.button
               key={project.id}
@@ -39,7 +39,9 @@ export function Portfolio() {
               viewport={{ once: true }}
               transition={{ delay: (i % 4) * 0.08 }}
               whileHover={{ y: -6 }}
-              className="room-card group relative aspect-[4/5] overflow-hidden rounded-2xl text-left"
+              className={`room-card group relative aspect-[4/5] overflow-hidden rounded-xl text-left sm:rounded-2xl ${
+                i >= 4 ? "hidden md:block" : ""
+              }`}
             >
               <Image
                 src={project.image}

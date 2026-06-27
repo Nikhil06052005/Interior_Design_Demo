@@ -14,7 +14,7 @@ export function BeforeAfterSlider({
   before,
   after,
   alt,
-  autoPlay = true,
+  autoPlay = false,
 }: BeforeAfterSliderProps) {
   const [position, setPosition] = useState(50);
   const [containerWidth, setContainerWidth] = useState(0);
@@ -43,12 +43,12 @@ export function BeforeAfterSlider({
     if (!autoPlay || dragging) return;
     const interval = setInterval(() => {
       setPosition((p) => {
-        let next = p + directionRef.current * 0.8;
+        let next = p + directionRef.current * 1.2;
         if (next >= 85) directionRef.current = -1;
         if (next <= 15) directionRef.current = 1;
         return next;
       });
-    }, 40);
+    }, 80);
     return () => clearInterval(interval);
   }, [autoPlay, dragging]);
 

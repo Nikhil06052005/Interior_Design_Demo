@@ -8,7 +8,7 @@ export function FAQ() {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
 
   return (
-    <section id="faq" className="py-16 md:py-24">
+    <section id="faq" className="section-padding">
       <div className="mx-auto max-w-3xl px-4 md:px-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -19,12 +19,12 @@ export function FAQ() {
           <p className="text-xs font-bold uppercase tracking-[0.2em] text-mankuu-red">
             FAQ
           </p>
-          <h2 className="mt-3 text-3xl font-extrabold text-mankuu-charcoal">
+          <h2 className="section-title mt-2 text-mankuu-charcoal md:mt-3">
             Common Questions
           </h2>
         </motion.div>
 
-        <div className="mt-10 space-y-3">
+        <div className="mt-6 space-y-2 sm:mt-10 sm:space-y-3">
           {faqs.map((faq, i) => (
             <motion.div
               key={faq.question}
@@ -32,14 +32,16 @@ export function FAQ() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: i * 0.05 }}
-              className="overflow-hidden rounded-xl border border-mankuu-border bg-white"
+              className={`overflow-hidden rounded-xl border border-mankuu-border bg-white ${
+                i >= 4 ? "hidden sm:block" : ""
+              }`}
             >
               <button
                 type="button"
                 onClick={() => setOpenIndex(openIndex === i ? null : i)}
-                className="flex w-full items-center justify-between gap-4 px-5 py-4 text-left"
+                className="flex w-full items-center justify-between gap-3 px-4 py-3 text-left sm:gap-4 sm:px-5 sm:py-4"
               >
-                <span className="font-semibold text-mankuu-charcoal">{faq.question}</span>
+                <span className="text-sm font-semibold text-mankuu-charcoal sm:text-base">{faq.question}</span>
                 <span
                   className={`flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-mankuu-cream text-mankuu-red transition-transform ${
                     openIndex === i ? "rotate-180" : ""

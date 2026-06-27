@@ -8,28 +8,28 @@ export function LeadCTA() {
   const whatsappUrl = `https://wa.me/91${contact.phone}?text=${encodeURIComponent(contact.whatsappMessage)}`;
 
   return (
-    <section id="contact" className="py-16 md:py-24">
+    <section id="contact" className="section-padding">
       <div className="mx-auto max-w-7xl px-4 md:px-8">
-        <div className="overflow-hidden rounded-3xl bg-mankuu-charcoal">
+        <div className="overflow-hidden rounded-2xl bg-mankuu-charcoal md:rounded-3xl">
           <div className="grid lg:grid-cols-2">
             <motion.div
               initial={{ opacity: 0, x: -20 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
-              className="flex flex-col justify-center p-8 md:p-12"
+              className="flex flex-col justify-center p-5 md:p-12"
             >
               <p className="text-xs font-bold uppercase tracking-[0.2em] text-mankuu-gold">
                 Get Started Today
               </p>
-              <h2 className="mt-3 text-3xl font-extrabold text-white md:text-4xl">
+              <h2 className="section-title mt-2 text-white md:mt-3">
                 Confused Between Styles, Layouts & Costs?
               </h2>
-              <p className="mt-4 text-white/75">
+              <p className="mt-3 text-sm text-white/75 md:mt-4 md:text-base">
                 Meet a designer who&apos;ll bring it all together — completely free.
                 Get 3D designs and a personalised quote for your home.
               </p>
 
-              <div className="mt-8 space-y-4">
+              <div className="mt-5 space-y-3 md:mt-8 md:space-y-4">
                 <a href={`tel:+91${contact.phone}`} className="flex items-center gap-3 text-white/90 hover:text-white">
                   <span className="flex h-10 w-10 items-center justify-center rounded-lg bg-white/10">
                     <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" /></svg>
@@ -50,30 +50,30 @@ export function LeadCTA() {
                 </a>
               </div>
 
-              <a href={whatsappUrl} target="_blank" rel="noopener noreferrer" className="mt-8 inline-flex w-fit items-center gap-2 rounded-lg bg-[#25D366] px-6 py-3 text-sm font-bold text-white hover:bg-[#1fb855]">
+              <a href={whatsappUrl} target="_blank" rel="noopener noreferrer" className="mt-5 inline-flex w-fit items-center gap-2 rounded-lg bg-[#25D366] px-5 py-2.5 text-sm font-bold text-white hover:bg-[#1fb855] md:mt-8 md:px-6 md:py-3">
                 Chat on WhatsApp
               </a>
             </motion.div>
 
-            <motion.div initial={{ opacity: 0, x: 20 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} className="bg-white p-8 md:p-12">
-              <h3 className="text-xl font-bold text-mankuu-charcoal">Book Your Free Consultation</h3>
-              <p className="mt-1 text-sm text-mankuu-muted">We&apos;ll reach out within 24 hours.</p>
-              <div className="mt-6"><ConsultationForm idPrefix="contact-" /></div>
+            <motion.div initial={{ opacity: 0, x: 20 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} className="bg-white p-5 md:p-12">
+              <h3 className="text-lg font-bold text-mankuu-charcoal md:text-xl">Book Your Free Consultation</h3>
+              <p className="mt-1 text-xs text-mankuu-muted sm:text-sm">We&apos;ll reach out within 24 hours.</p>
+              <div className="mt-4 md:mt-6"><ConsultationForm idPrefix="contact-" /></div>
             </motion.div>
           </div>
         </div>
 
-        <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="mt-10 overflow-hidden rounded-2xl border border-mankuu-border shadow-sm">
+        <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="mt-6 overflow-hidden rounded-xl border border-mankuu-border shadow-sm md:mt-10 md:rounded-2xl">
           <iframe
             src={contact.mapEmbed}
             width="100%"
-            height="320"
+            height="220"
             style={{ border: 0 }}
             allowFullScreen
             loading="lazy"
             referrerPolicy="no-referrer-when-downgrade"
             title="MANKUU Studio Location - Moga"
-            className="w-full grayscale-[30%] transition-all hover:grayscale-0"
+            className="h-[220px] w-full grayscale-[30%] transition-all hover:grayscale-0 md:h-[320px]"
           />
         </motion.div>
       </div>

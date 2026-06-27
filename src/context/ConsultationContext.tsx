@@ -16,6 +16,8 @@ interface ConsultationContextValue {
 }
 
 const ConsultationContext = createContext<ConsultationContextValue | null>(null);
+const LOADER_KEY = "mankuu-intro-seen";
+const AUTO_OPEN_DELAY_MS = 10000;
 
 export function ConsultationProvider({ children }: { children: ReactNode }) {
   const [isOpen, setIsOpen] = useState(false);
@@ -26,10 +28,27 @@ export function ConsultationProvider({ children }: { children: ReactNode }) {
 
   useEffect(() => {
     if (hasAutoOpened) return;
-    const timer = setTimeout(() => {
-      setIsOpen(true);
-      setHasAutoOpened(true);
-    }, 4000);
+
+    let timer: ReturnType<typeof setTimeout>;
+
+    const scheduleOpen = () => {
+      timer = setTimeout(() => {
+        setIsOpen(true);
+        setHasAutoOpened(true);
+      }, AUTO_OPEN_DELAY_MS);
+    };
+
+    if (sessionStorage.getItem(LOADER_KEY) === "1") {
+      scheduleOpen();
+    } else {
+      const onLoaderDone = () => scheduleOpen();
+      window.addEventListener("mankuu:loader-done", onLoaderDone, { once: true });
+      return () => {
+        window.removeEventListener("mankuu:loader-done", onLoaderDone);
+        clearTimeout(timer);
+      };
+    }
+
     return () => clearTimeout(timer);
   }, [hasAutoOpened]);
 

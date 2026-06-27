@@ -295,23 +295,23 @@ export const projectVideos = [
 ];
 
 export const featuredBeforeAfter = {
-  title: "Living Room — TV Wall & Ceiling",
+  title: "Bedroom — Modern Minimalist Makeover",
   location: "Moga",
   description:
-    "On-site construction and structural work → finished interiors with TV wall and ceiling details. Drag the slider to see the transformation from build phase to move-in ready.",
-  before: "/images/projects/construction-site.jpg",
-  after: "/images/projects/living-tv-wall.jpg",
+    "From a cluttered room with worn furniture and exposed wiring to a calm, contemporary bedroom — custom floating wardrobe, tray ceiling lighting and a refined neutral palette.",
+  before: "/images/before-after/bedroom-before.jpg",
+  after: "/images/before-after/bedroom-after.jpg",
 };
 
 export const beforeAfterProjects = [
   {
     id: 1,
-    title: "Bedroom — Modern Minimalist Makeover",
+    title: "Living Room — TV Wall & Ceiling",
     location: "Moga",
     description:
-      "From a cluttered room with worn furniture and exposed wiring to a calm, contemporary bedroom — custom floating wardrobe, tray ceiling lighting and a refined neutral palette.",
-    before: "/images/before-after/bedroom-before.jpg",
-    after: "/images/before-after/bedroom-after.jpg",
+      "On-site construction and structural work → finished interiors with TV wall and ceiling details.",
+    before: "/images/projects/construction-site.jpg",
+    after: "/images/projects/living-tv-wall.jpg",
   },
   {
     id: 2,
