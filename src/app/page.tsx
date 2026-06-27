@@ -1,16 +1,36 @@
+import dynamic from "next/dynamic";
 import { Hero } from "@/components/sections/Hero";
 import { TrustStrip } from "@/components/sections/TrustStrip";
 import { RoomCategories } from "@/components/sections/RoomCategories";
-import { WhyChooseUs } from "@/components/sections/WhyChooseUs";
-import { EndToEndServices } from "@/components/sections/EndToEndServices";
-import { Process } from "@/components/sections/Process";
-import { Founder } from "@/components/sections/Founder";
-import { Portfolio } from "@/components/sections/Portfolio";
-import { BeforeAfterSection } from "@/components/sections/BeforeAfterSection";
-import { Testimonials } from "@/components/sections/Testimonials";
-import { InstagramFeed } from "@/components/sections/InstagramFeed";
-import { FAQ } from "@/components/sections/FAQ";
-import { LeadCTA } from "@/components/sections/LeadCTA";
+
+const WhyChooseUs = dynamic(
+  () => import("@/components/sections/WhyChooseUs").then((m) => m.WhyChooseUs)
+);
+const EndToEndServices = dynamic(
+  () => import("@/components/sections/EndToEndServices").then((m) => m.EndToEndServices)
+);
+const Process = dynamic(
+  () => import("@/components/sections/Process").then((m) => m.Process)
+);
+const Portfolio = dynamic(
+  () => import("@/components/sections/Portfolio").then((m) => m.Portfolio)
+);
+const BeforeAfterSection = dynamic(
+  () => import("@/components/sections/BeforeAfterSection").then((m) => m.BeforeAfterSection)
+);
+const Founder = dynamic(
+  () => import("@/components/sections/Founder").then((m) => m.Founder)
+);
+const Testimonials = dynamic(
+  () => import("@/components/sections/Testimonials").then((m) => m.Testimonials)
+);
+const InstagramFeed = dynamic(
+  () => import("@/components/sections/InstagramFeed").then((m) => m.InstagramFeed)
+);
+const FAQ = dynamic(() => import("@/components/sections/FAQ").then((m) => m.FAQ));
+const LeadCTA = dynamic(
+  () => import("@/components/sections/LeadCTA").then((m) => m.LeadCTA)
+);
 
 export default function Home() {
   return (

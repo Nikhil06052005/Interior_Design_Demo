@@ -1,6 +1,3 @@
-"use client";
-
-import { motion } from "framer-motion";
 import { BeforeAfterSlider } from "@/components/ui/BeforeAfterSlider";
 import { BeforeAfterVideoPair } from "@/components/ui/BeforeAfterVideoPair";
 import { ScrollReveal } from "@/components/ui/ScrollReveal";
@@ -32,7 +29,7 @@ export function BeforeAfterSection() {
         </ScrollReveal>
 
         <div className="mt-16 grid items-center gap-10 lg:grid-cols-2">
-          <ScrollReveal direction="left">
+          <ScrollReveal>
             <BeforeAfterSlider
               before={featured.before}
               after={featured.after}
@@ -40,7 +37,7 @@ export function BeforeAfterSection() {
               autoPlay
             />
           </ScrollReveal>
-          <ScrollReveal direction="right" delay={0.15}>
+          <ScrollReveal delay={0.15}>
             <p className="text-sm font-semibold uppercase tracking-widest text-mankuu-gold">
               {featured.location}
             </p>
@@ -53,7 +50,7 @@ export function BeforeAfterSection() {
 
         <div className="mt-14 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
           {beforeAfterProjects.map((project, i) => (
-            <ScrollReveal key={project.id} delay={i * 0.1}>
+            <ScrollReveal key={project.id} delay={i * 0.08}>
               <BeforeAfterSlider
                 before={project.before}
                 after={project.after}

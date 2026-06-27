@@ -1,19 +1,26 @@
+import dynamic from "next/dynamic";
 import type { Metadata } from "next";
 import { Plus_Jakarta_Sans } from "next/font/google";
 import "./globals.css";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { WhatsAppButton } from "@/components/layout/WhatsAppButton";
-import { ConsultationModal } from "@/components/layout/ConsultationModal";
-import { StickyCTA } from "@/components/layout/StickyCTA";
+import { SiteLoader } from "@/components/layout/SiteLoader";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { ConsultationProvider } from "@/context/ConsultationContext";
 import { siteConfig } from "@/lib/content";
 
+const ConsultationModal = dynamic(
+  () => import("@/components/layout/ConsultationModal").then((m) => m.ConsultationModal)
+);
+const StickyCTA = dynamic(
+  () => import("@/components/layout/StickyCTA").then((m) => m.StickyCTA)
+);
+
 const jakarta = Plus_Jakarta_Sans({
   variable: "--font-jakarta",
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700", "800"],
+  weight: ["400", "600", "700", "800"],
   display: "swap",
 });
 
@@ -69,6 +76,7 @@ export default function RootLayout({
     <html lang="en-IN" className={`${jakarta.variable} h-full`}>
       <body className="min-h-full flex flex-col antialiased bg-white text-mankuu-charcoal">
         <JsonLd />
+        <SiteLoader />
         <ConsultationProvider>
           <Navbar />
           <main className="flex-1 pb-20 md:pb-0">{children}</main>

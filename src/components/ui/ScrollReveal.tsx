@@ -1,39 +1,50 @@
 "use client";
 
-import { motion } from "framer-motion";
-import type { ReactNode } from "react";
+import { useEffect, useRef, type ReactNode } from "react";
 
 interface ScrollRevealProps {
   children: ReactNode;
   delay?: number;
-  direction?: "up" | "left" | "right" | "scale";
   className?: string;
 }
-
-const offsets = {
-  up: { y: 36, x: 0, scale: 1 },
-  left: { y: 0, x: -36, scale: 1 },
-  right: { y: 0, x: 36, scale: 1 },
-  scale: { y: 0, x: 0, scale: 0.94 },
-};
 
 export function ScrollReveal({
   children,
   delay = 0,
-  direction = "up",
   className = "",
 }: ScrollRevealProps) {
-  const offset = offsets[direction];
+  const ref = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      el.classList.add("scroll-reveal-visible");
+      return;
+    }
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          el.classList.add("scroll-reveal-visible");
+          observer.disconnect();
+        }
+      },
+      { rootMargin: "-40px 0px", threshold: 0.08 }
+    );
+
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
 
   return (
-    <motion.div
-      initial={{ opacity: 0, y: offset.y, x: offset.x, scale: offset.scale }}
-      whileInView={{ opacity: 1, y: 0, x: 0, scale: 1 }}
-      viewport={{ once: true, margin: "-60px" }}
-      transition={{ duration: 0.65, delay, ease: [0.22, 1, 0.36, 1] }}
-      className={className}
+    <div
+      ref={ref}
+      className={`scroll-reveal ${className}`}
+      style={{ transitionDelay: `${delay}s` }}
     >
       {children}
-    </motion.div>
+    </div>
   );
 }

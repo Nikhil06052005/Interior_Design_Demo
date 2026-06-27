@@ -1,7 +1,6 @@
 "use client";
 
 import Image from "next/image";
-import { motion } from "framer-motion";
 import { ConsultationForm } from "@/components/ui/ConsultationForm";
 import { heroImage } from "@/lib/content";
 
@@ -14,19 +13,15 @@ export function Hero() {
           alt="MANKUU interior design project — luxury living room and modular kitchen in Moga Punjab"
           fill
           priority
-          className="hero-ken-burns object-cover"
+          className="object-cover"
           sizes="100vw"
+          quality={75}
         />
         <div className="absolute inset-0 bg-gradient-to-r from-black/75 via-black/50 to-black/30" />
       </div>
 
       <div className="relative mx-auto flex max-w-7xl flex-col items-center gap-10 px-4 py-16 lg:flex-row lg:items-center lg:justify-between lg:gap-16 lg:px-8 lg:py-24">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7 }}
-          className="max-w-xl text-center lg:text-left"
-        >
+        <div className="animate-fade-in-up max-w-xl text-center lg:text-left">
           <span className="inline-block rounded-full bg-white/15 px-4 py-1.5 text-xs font-semibold uppercase tracking-widest text-white backdrop-blur-sm">
             Moga, Punjab
           </span>
@@ -56,13 +51,11 @@ export function Hero() {
               <p className="text-xs text-white/70">3D Consultation</p>
             </div>
           </div>
-        </motion.div>
+        </div>
 
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, delay: 0.2 }}
-          className="w-full max-w-md shrink-0"
+        <div
+          className="animate-fade-in-up w-full max-w-md shrink-0"
+          style={{ animationDelay: "0.15s" }}
         >
           <div className="rounded-2xl bg-white p-6 shadow-2xl sm:p-8">
             <h2 className="text-xl font-bold text-mankuu-charcoal">
@@ -75,7 +68,7 @@ export function Hero() {
               <ConsultationForm idPrefix="hero-" compact />
             </div>
           </div>
-        </motion.div>
+        </div>
       </div>
     </section>
   );
