@@ -78,7 +78,7 @@ export function RoomCategories() {
                   {room.subtitle}
                 </motion.p>
                 <h3 className="mt-1 text-lg font-bold text-white">{room.title}</h3>
-                <span className="mt-3 inline-flex translate-y-2 items-center gap-1 text-xs font-semibold text-white opacity-0 transition-all duration-300 group-hover:translate-y-0 group-hover:opacity-100">
+                <span className="mt-2 inline-flex translate-y-2 items-center gap-1 text-xs font-semibold text-white opacity-0 transition-all duration-300 group-hover:translate-y-0 group-hover:opacity-100">
                   Get Estimate
                   <svg className="h-3.5 w-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
