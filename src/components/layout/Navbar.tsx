@@ -31,7 +31,7 @@ export function Navbar() {
         }`}
       >
         <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-3 md:px-8">
-          <BrandLogo priority className="h-11 w-auto object-contain md:h-12" />
+          <BrandLogo priority className="h-9 w-auto object-contain sm:h-11 md:h-12" />
 
           <nav className="hidden items-center gap-7 lg:flex">
             {navLinks.map((link) => (
@@ -79,13 +79,13 @@ export function Navbar() {
           menuOpen ? "visible opacity-100" : "invisible opacity-0 pointer-events-none"
         }`}
       >
-        <nav className="flex h-full flex-col items-center justify-center gap-6 pt-16">
+        <nav className="flex h-full flex-col items-center justify-center gap-4 pt-16">
           {navLinks.map((link) => (
             <a
               key={link.href}
               href={link.href}
               onClick={() => setMenuOpen(false)}
-              className="text-2xl font-bold text-gray-800 hover:text-mankuu-red"
+              className="text-xl font-bold text-gray-800 hover:text-mankuu-red"
             >
               {link.label}
             </a>

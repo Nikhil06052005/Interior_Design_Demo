@@ -5,7 +5,7 @@ import { processSteps } from "@/lib/content";
 
 export function Process() {
   return (
-    <section className="bg-mankuu-charcoal py-16 text-white md:py-24">
+    <section className="section-padding bg-mankuu-charcoal text-white">
       <div className="mx-auto max-w-7xl px-4 md:px-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -16,12 +16,12 @@ export function Process() {
           <p className="text-xs font-bold uppercase tracking-[0.2em] text-mankuu-gold">
             How It Works
           </p>
-          <h2 className="mt-3 text-3xl font-extrabold md:text-4xl">
+          <h2 className="section-title mt-2 md:mt-3">
             From Design to Move-In
           </h2>
         </motion.div>
 
-        <div className="mt-14 grid gap-8 sm:grid-cols-2 lg:hidden">
+        <div className="mt-6 flex snap-x snap-mandatory gap-4 overflow-x-auto pb-2 scrollbar-hide sm:mt-10 lg:hidden">
           {processSteps.map((step, i) => (
             <motion.div
               key={step.step}
@@ -29,12 +29,13 @@ export function Process() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: i * 0.12 }}
+              className="min-w-[75vw] shrink-0 snap-center sm:min-w-[45vw]"
             >
-              <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-mankuu-red text-xl font-extrabold">
+              <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-mankuu-red text-lg font-extrabold sm:h-16 sm:w-16 sm:rounded-2xl sm:text-xl">
                 {step.step}
               </div>
-              <h3 className="mt-5 text-lg font-bold">{step.title}</h3>
-              <p className="mt-2 text-sm leading-relaxed text-white/70">
+              <h3 className="mt-3 text-base font-bold sm:mt-5 sm:text-lg">{step.title}</h3>
+              <p className="mt-1.5 text-xs leading-relaxed text-white/70 sm:mt-2 sm:text-sm">
                 {step.description}
               </p>
             </motion.div>

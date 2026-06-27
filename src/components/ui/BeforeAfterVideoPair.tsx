@@ -145,7 +145,7 @@ export function BeforeAfterVideoPair() {
   }, [playBoth, pauseBoth]);
 
   return (
-    <div ref={containerRef} className="grid gap-6 lg:grid-cols-2">
+    <div ref={containerRef} className="grid gap-4 sm:gap-6 lg:grid-cols-2">
       <VideoCard
         videoRef={beforeRef}
         src={beforeVideo.src}

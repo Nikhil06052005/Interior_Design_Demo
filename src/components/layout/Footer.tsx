@@ -61,8 +61,8 @@ export function Footer() {
 
   return (
     <footer className="bg-mankuu-charcoal text-white">
-      <div className="mx-auto max-w-7xl px-4 py-14 md:px-8 md:py-16">
-        <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-12 lg:gap-8">
+      <div className="mx-auto max-w-7xl px-4 py-8 md:px-8 md:py-16">
+        <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-12 lg:gap-8">
           <div className="lg:col-span-4">
             <BrandLogo linked={false} className="h-12 w-auto max-w-[200px] object-contain object-left" />
             <p className="mt-4 text-sm leading-relaxed text-white/70">
@@ -147,7 +147,7 @@ export function Footer() {
           </div>
         </div>
 
-        <div className="mt-12 border-t border-white/10 pt-10">
+        <div className="mt-8 border-t border-white/10 pt-6 md:mt-12 md:pt-10">
           <div className="flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between">
             <div>
               <h3 className="text-xs font-bold uppercase tracking-widest text-mankuu-gold">

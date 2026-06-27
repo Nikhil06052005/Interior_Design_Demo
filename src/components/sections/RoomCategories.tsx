@@ -24,7 +24,7 @@ export function RoomCategories() {
   const { openModal } = useConsultation();
 
   return (
-    <section id="solutions" className="py-16 md:py-24">
+    <section id="solutions" className="section-padding">
       <div className="mx-auto max-w-7xl px-4 md:px-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -36,10 +36,10 @@ export function RoomCategories() {
           <p className="text-xs font-bold uppercase tracking-[0.2em] text-mankuu-red">
             End-to-End Interiors
           </p>
-          <h2 className="mt-3 text-3xl font-extrabold text-mankuu-charcoal md:text-4xl">
+          <h2 className="section-title mt-2 text-mankuu-charcoal md:mt-3">
             Designed for Every Room
           </h2>
-          <p className="mx-auto mt-3 max-w-2xl text-mankuu-muted">
+          <p className="mx-auto mt-2 max-w-2xl text-sm text-mankuu-muted md:mt-3">
             Browse our interior solutions for kitchens, living rooms, bedrooms and more.
           </p>
         </motion.div>
@@ -48,8 +48,8 @@ export function RoomCategories() {
           variants={container}
           initial="hidden"
           whileInView="show"
-          viewport={{ once: true, margin: "-60px" }}
-          className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4"
+          viewport={{ once: true, margin: "-40px" }}
+          className="mt-6 flex snap-x snap-mandatory gap-3 overflow-x-auto pb-2 scrollbar-hide sm:mt-10 sm:grid sm:snap-none sm:grid-cols-2 sm:overflow-visible sm:gap-5 lg:grid-cols-4"
         >
           {roomCategories.map((room) => (
             <motion.button
@@ -59,7 +59,7 @@ export function RoomCategories() {
               whileHover={{ y: -8, transition: { duration: 0.25 } }}
               whileTap={{ scale: 0.98 }}
               onClick={openModal}
-              className="room-card group relative aspect-[3/4] overflow-hidden rounded-2xl text-left"
+              className="room-card group relative aspect-[4/5] min-w-[72vw] shrink-0 snap-center overflow-hidden rounded-2xl text-left sm:min-w-0 sm:aspect-[3/4]"
             >
               <Image
                 src={room.image}
