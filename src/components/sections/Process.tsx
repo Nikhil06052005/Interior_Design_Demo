@@ -21,7 +21,7 @@ export function Process() {
           </h2>
         </motion.div>
 
-        <div className="mt-14 grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="mt-14 grid gap-8 sm:grid-cols-2 lg:hidden">
           {processSteps.map((step, i) => (
             <motion.div
               key={step.step}
@@ -29,11 +29,7 @@ export function Process() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: i * 0.12 }}
-              className="relative"
             >
-              {i < processSteps.length - 1 && (
-                <div className="absolute right-0 top-8 hidden h-0.5 w-full translate-x-1/2 bg-white/15 lg:block" />
-              )}
               <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-mankuu-red text-xl font-extrabold">
                 {step.step}
               </div>
@@ -41,6 +37,35 @@ export function Process() {
               <p className="mt-2 text-sm leading-relaxed text-white/70">
                 {step.description}
               </p>
+            </motion.div>
+          ))}
+        </div>
+
+        <div className="mt-14 hidden lg:flex">
+          {processSteps.map((step, i) => (
+            <motion.div
+              key={step.step}
+              initial={{ opacity: 0, y: 24 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: i * 0.12 }}
+              className="flex flex-1 items-start"
+            >
+              <div className="min-w-0 flex-1">
+                <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-mankuu-red text-xl font-extrabold">
+                  {step.step}
+                </div>
+                <h3 className="mt-5 text-lg font-bold">{step.title}</h3>
+                <p className="mt-2 text-sm leading-relaxed text-white/70">
+                  {step.description}
+                </p>
+              </div>
+              {i < processSteps.length - 1 && (
+                <div
+                  className="mx-6 mt-8 h-px shrink-0 flex-1 bg-white/20"
+                  aria-hidden
+                />
+              )}
             </motion.div>
           ))}
         </div>

@@ -1,10 +1,9 @@
 "use client";
 
-import Image from "next/image";
-import Link from "next/link";
 import { useEffect, useState } from "react";
+import { BrandLogo } from "@/components/ui/BrandLogo";
 import { useConsultation } from "@/context/ConsultationContext";
-import { contact, navLinks, siteConfig } from "@/lib/content";
+import { contact, navLinks } from "@/lib/content";
 
 export function Navbar() {
   const [scrolled, setScrolled] = useState(false);
@@ -32,12 +31,7 @@ export function Navbar() {
         }`}
       >
         <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-3 md:px-8">
-          <Link href="#home" className="flex items-center gap-2.5">
-            <Image src="/images/logo-house.svg" alt="MANKUU" width={32} height={32} />
-            <span className="text-xl font-extrabold tracking-tight text-mankuu-red">
-              {siteConfig.name}
-            </span>
-          </Link>
+          <BrandLogo priority className="h-11 w-auto object-contain md:h-12" />
 
           <nav className="hidden items-center gap-7 lg:flex">
             {navLinks.map((link) => (

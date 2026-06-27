@@ -1,6 +1,6 @@
 # MANKUU Interior Designer Website
 
-Phase 1 landing page for MANKUU — Interior & Architectural Designer, Moga.
+Complete lead-generation website for MANKUU — Interior & Architectural Designer, Moga, Punjab.
 
 ## Quick Start
 
@@ -11,35 +11,45 @@ npm run dev
 
 Open [http://localhost:3000](http://localhost:3000)
 
+## What's Included
+
+- Hero with consultation form
+- 8-project portfolio grid (name, location, type)
+- Before/After interactive sliders + auto-play previews
+- Services with starting prices
+- 4-step process timeline
+- Founder section
+- Client testimonials
+- FAQ accordion
+- Instagram gallery
+- Google Maps embed
+- Consultation popup + WhatsApp + sticky mobile CTA
+
 ## Environment Variables
 
-Copy `.env.local.example` to `.env.local` and add your Web3Forms key:
+Copy `.env.local.example` to `.env.local`:
 
-```bash
-cp .env.local.example .env.local
+```
+NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY=your_key_here
 ```
 
-Get a free access key at [web3forms.com](https://web3forms.com) using `manku14434@gmail.com`.
+Get a free key at [web3forms.com](https://web3forms.com) using `manku14434@gmail.com`.
 
 ## Deploy to Vercel
 
-1. Push this folder to GitHub
-2. Go to [vercel.com](https://vercel.com) → **Add New Project** → import the repo
-3. Set root directory to `mankuu-site` if repo contains parent folder
-4. Add environment variable: `NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY`
-5. Deploy — Vercel auto-detects Next.js
+1. Push to GitHub
+2. Import on [vercel.com](https://vercel.com)
+3. Add `NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY` in env vars
+4. Deploy
 
-## Phase 1 Includes
+## Images
 
-- Hero with CSS 3D room cards
-- Services, Trust stats, Founder section
-- Portfolio teaser (Coming Soon)
-- Lead capture form + WhatsApp button
-- Mobile responsive, performance optimized
+All images are stored locally in `public/images/` for fast loading:
+- `hero/` — hero background
+- `rooms/` — room category cards
+- `portfolio/` — 8 project photos
+- `before-after/` — transformation pairs
+- `services/` — service cards
+- `founder.jpg` — founder portrait
 
-## Phase 2 (Coming Later)
-
-- Full portfolio gallery
-- Testimonials
-- Design process timeline
-- Blog
+Replace any image by overwriting the file with the same name.

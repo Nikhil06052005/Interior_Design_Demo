@@ -50,7 +50,6 @@ body {
 }
 
 .founder-portrait {
-  filter: saturate(1.05) contrast(1.08) brightness(1.02);
   object-fit: cover;
   object-position: center top;
 }
@@ -132,9 +131,38 @@ body {
 
 @media (prefers-reduced-motion: reduce) {
   .animate-float,
-  .card-shine {
+  .card-shine,
+  .hero-ken-burns {
     animation: none;
   }
+}
+
+.hero-ken-burns {
+  animation: kenBurns 22s ease-in-out infinite alternate;
+}
+
+@keyframes kenBurns {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(1.07);
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.7s ease-out forwards;
 }
 
 .modal-backdrop {

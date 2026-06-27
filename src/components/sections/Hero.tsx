@@ -8,13 +8,13 @@ import { heroImage } from "@/lib/content";
 export function Hero() {
   return (
     <section id="home" className="relative min-h-[90vh] pt-16">
-      <div className="absolute inset-0">
+      <div className="absolute inset-0 overflow-hidden">
         <Image
           src={heroImage}
-          alt="Beautiful home interior by MANKUU"
+          alt="MANKUU interior design project — luxury living room and modular kitchen in Moga Punjab"
           fill
           priority
-          className="object-cover"
+          className="hero-ken-burns object-cover"
           sizes="100vw"
         />
         <div className="absolute inset-0 bg-gradient-to-r from-black/75 via-black/50 to-black/30" />
@@ -31,13 +31,13 @@ export function Hero() {
             Moga, Punjab
           </span>
           <h1 className="mt-5 text-4xl font-extrabold leading-tight text-white sm:text-5xl lg:text-[3.25rem] lg:leading-[1.15]">
-            Your Dream Home.
+            Best Interior Designer
             <br />
-            <span className="text-mankuu-gold">Designed, Built, Delivered.</span>
+            <span className="text-mankuu-gold">in Moga, Punjab</span>
           </h1>
           <p className="mt-5 text-base leading-relaxed text-white/85 sm:text-lg">
-            End-to-end interiors, architecture and Vastu — without the running around.
-            One team from concept to keys.
+            Your Dream Home — Designed, Built, Delivered. Modular kitchens, full home
+            interiors, Vastu & architecture by Manjeet Singh.
           </p>
 
           <div className="mt-8 flex flex-wrap items-center justify-center gap-6 lg:justify-start">
