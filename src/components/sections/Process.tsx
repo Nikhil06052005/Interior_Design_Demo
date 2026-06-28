@@ -21,7 +21,38 @@ export function Process() {
           </h2>
         </motion.div>
 
-        <div className="mt-6 flex snap-x snap-mandatory gap-4 overflow-x-auto pb-2 scrollbar-hide sm:mt-10 lg:hidden">
+        {/* Phone — vertical timeline, saare steps ek saath clear dikhen */}
+        <div className="mt-6 md:hidden">
+          {processSteps.map((step, i) => (
+            <motion.div
+              key={step.step}
+              initial={{ opacity: 0, x: -16 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: i * 0.08 }}
+              className="relative flex gap-4 pb-5 last:pb-0"
+            >
+              {i < processSteps.length - 1 && (
+                <span
+                  className="absolute left-[1.375rem] top-12 bottom-0 w-px bg-gradient-to-b from-mankuu-red/60 to-white/15"
+                  aria-hidden
+                />
+              )}
+              <div className="relative z-10 flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-mankuu-red text-sm font-extrabold shadow-lg shadow-mankuu-red/30">
+                {step.step}
+              </div>
+              <div className="min-w-0 flex-1 pt-0.5">
+                <h3 className="text-base font-bold leading-snug">{step.title}</h3>
+                <p className="mt-1.5 text-xs leading-relaxed text-white/70">
+                  {step.description}
+                </p>
+              </div>
+            </motion.div>
+          ))}
+        </div>
+
+        {/* Tablet — 2 column grid */}
+        <div className="mt-10 hidden gap-6 md:grid md:grid-cols-2 lg:hidden">
           {processSteps.map((step, i) => (
             <motion.div
               key={step.step}
@@ -29,19 +60,19 @@ export function Process() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: i * 0.12 }}
-              className="min-w-[75vw] shrink-0 snap-center sm:min-w-[45vw]"
             >
-              <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-mankuu-red text-lg font-extrabold sm:h-16 sm:w-16 sm:rounded-2xl sm:text-xl">
+              <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-mankuu-red text-lg font-extrabold">
                 {step.step}
               </div>
-              <h3 className="mt-3 text-base font-bold sm:mt-5 sm:text-lg">{step.title}</h3>
-              <p className="mt-1.5 text-xs leading-relaxed text-white/70 sm:mt-2 sm:text-sm">
+              <h3 className="mt-4 text-lg font-bold">{step.title}</h3>
+              <p className="mt-2 text-sm leading-relaxed text-white/70">
                 {step.description}
               </p>
             </motion.div>
           ))}
         </div>
 
+        {/* Desktop — horizontal row */}
         <div className="mt-14 hidden lg:flex">
           {processSteps.map((step, i) => (
             <motion.div

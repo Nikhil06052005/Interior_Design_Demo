@@ -3,11 +3,10 @@
 import { useCallback, useEffect, useLayoutEffect, useRef, useState } from "react";
 
 const LOADER_KEY = "mankuu-intro-seen";
-const FADE_OUT_MS = 400;
-/** Loader kabhi bhi is se zyada der nahi dikhega — video load ho ya na ho */
-const HARD_CAP_MS = 7000;
-/** Autoplay block ho to itni der baad auto skip */
-const AUTOPLAY_FAIL_MS = 2800;
+const FADE_OUT_MS = 220;
+const HARD_CAP_MS = 3800;
+const AUTOPLAY_FAIL_MS = 1200;
+const VIDEO_PLAYBACK_RATE = 1.55;
 
 function readSeen(): boolean {
   try {
@@ -80,7 +79,7 @@ export function SiteLoader() {
 
       const onTimeUpdate = () => {
         const { currentTime, duration } = video;
-        if (Number.isFinite(duration) && duration > 0 && currentTime >= duration - 0.35) {
+        if (Number.isFinite(duration) && duration > 0 && currentTime >= duration - 0.2) {
           finish();
         }
       };
@@ -96,6 +95,7 @@ export function SiteLoader() {
 
       const startPlay = () => {
         if (cancelled) return;
+        video.playbackRate = VIDEO_PLAYBACK_RATE;
         const playPromise = video.play();
         if (playPromise) {
           playPromise
@@ -117,7 +117,7 @@ export function SiteLoader() {
       /* Video load hi na ho — 4s baad skip */
       const loadFailTimer = window.setTimeout(() => {
         if (video.readyState < 2) finish();
-      }, 4000);
+      }, 2000);
       cleanups.push(() => window.clearTimeout(loadFailTimer));
     };
 
