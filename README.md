@@ -25,22 +25,11 @@ Open [http://localhost:3000](http://localhost:3000)
 - Google Maps embed
 - Consultation popup + WhatsApp + sticky mobile CTA
 
-## Environment Variables
+## Form Leads (WhatsApp)
 
-Copy `.env.local.example` to `.env.local`:
+Forms open WhatsApp with a pre-filled message to the client — **no `.env` file needed**.
 
-```
-NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY=your_key_here
-```
-
-Get a free key at [web3forms.com](https://web3forms.com) using `manku14434@gmail.com`.
-
-## Deploy to Vercel
-
-1. Push to GitHub
-2. Import on [vercel.com](https://vercel.com)
-3. Add `NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY` in env vars
-4. Deploy
+Optional Telegram alerts: see commented lines in `.env.local.example`.
 
 ## Images
 

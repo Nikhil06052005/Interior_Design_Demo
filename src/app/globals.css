@@ -255,7 +255,7 @@ body {
   justify-content: center;
   background: #ffffff;
   opacity: 1;
-  transition: opacity 0.5s ease, visibility 0.5s ease;
+  transition: opacity 0.28s ease, visibility 0.28s ease;
 }
 
 .site-loader-exit {
@@ -272,7 +272,7 @@ body {
     rgba(244, 162, 97, 0.12) 0%,
     rgba(255, 255, 255, 0) 55%
   );
-  animation: loaderPulse 2.4s ease-in-out infinite;
+  animation: loaderPulse 1.4s ease-in-out infinite;
 }
 
 .site-loader-video {
@@ -282,7 +282,7 @@ body {
   max-height: 70vh;
   height: auto;
   object-fit: contain;
-  animation: loaderScaleIn 0.7s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  animation: loaderScaleIn 0.32s cubic-bezier(0.22, 1, 0.36, 1) forwards;
 }
 
 @media (max-width: 640px) {
