@@ -60,6 +60,9 @@ export const metadata: Metadata = {
     images: ["/images/projects/living-tv-wall.jpg"],
   },
   robots: { index: true, follow: true, googleBot: { index: true, follow: true } },
+  verification: {
+    google: "x5_Gw1feOv-X8zRi02DdG5ouKOtV7GnccXVc_OQ9Iwo",
+  },
   category: "Interior Design",
   icons: {
     icon: [
