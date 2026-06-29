@@ -69,9 +69,9 @@ export function Hero() {
           style={{ animationDelay: "0.15s" }}
         >
           <div className="rounded-2xl bg-white p-6 shadow-2xl sm:p-8">
-            <h2 className="text-xl font-bold text-mankuu-charcoal">
+            <p className="text-xl font-bold text-mankuu-charcoal">
               Get a Free Estimate
-            </h2>
+            </p>
             <p className="mt-1 text-sm text-mankuu-muted">
               Share your details and get a personalised design consultation.
             </p>

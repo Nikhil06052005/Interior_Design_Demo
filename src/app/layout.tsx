@@ -36,7 +36,7 @@ export const metadata: Metadata = {
   creator: "MANKUU Architectural Designer",
   publisher: "MANKUU",
   formatDetection: { telephone: true, email: true },
-  alternates: { canonical: siteConfig.url },
+  alternates: { canonical: "/" },
   openGraph: {
     title: "MANKUU | Best Interior Designer & Architect in Moga, Punjab",
     description: siteConfig.description,
@@ -46,18 +46,18 @@ export const metadata: Metadata = {
     siteName: "MANKUU Interior Designer",
     images: [
       {
-        url: "/images/projects/living-tv-wall.jpg",
+        url: "/images/hero/main.jpg",
         width: 1200,
         height: 630,
-        alt: "MANKUU interior design project — living room Moga Punjab",
+        alt: "MANKUU luxury interior design — best interior designer in Moga Punjab",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "MANKUU | Interior Designer Moga Punjab",
+    title: "MANKUU | Best Interior Designer in Moga, Punjab",
     description: siteConfig.description,
-    images: ["/images/projects/living-tv-wall.jpg"],
+    images: ["/images/hero/main.jpg"],
   },
   robots: { index: true, follow: true, googleBot: { index: true, follow: true } },
   verification: {
