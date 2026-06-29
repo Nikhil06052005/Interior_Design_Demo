@@ -5,7 +5,7 @@ export const siteConfig = {
   logoIcon: "/images/brand/logo-icon.png",
   description:
     "MANKUU by Manjeet Singh — top interior designer & architect in Moga, Punjab. Modular kitchens, full home interiors, Vastu consultation & construction. Free 3D design consultation.",
-  url: "https://mankuu.vercel.app",
+  url: "https://www.mankuuinteriors.in",
   keywords: [
     "interior designer Moga",
     "best interior designer Moga Punjab",
