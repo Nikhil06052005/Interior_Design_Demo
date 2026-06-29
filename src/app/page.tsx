@@ -1,7 +1,17 @@
+import type { Metadata } from "next";
 import dynamic from "next/dynamic";
 import { Hero } from "@/components/sections/Hero";
 import { TrustStrip } from "@/components/sections/TrustStrip";
 import { RoomCategories } from "@/components/sections/RoomCategories";
+import { siteConfig } from "@/lib/content";
+
+export const metadata: Metadata = {
+  title: {
+    absolute: "MANKUU | Best Interior Designer & Architect in Moga, Punjab",
+  },
+  description: siteConfig.description,
+  alternates: { canonical: "/" },
+};
 
 const WhyChooseUs = dynamic(
   () => import("@/components/sections/WhyChooseUs").then((m) => m.WhyChooseUs)
